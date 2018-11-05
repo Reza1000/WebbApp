@@ -1,0 +1,41 @@
+﻿@model OverBevakningApp.Models.Robot
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Tabort robot</h2>
+
+
+<div>
+    
+    <hr>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Beskrivning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beskrivning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IntPuls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IntPuls)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Tabort" class="btn btn-danger" /> |
+            @Html.ActionLink("tillbaka till robot listan", "Index", "RobotsController", new { @class = "btn btn-primary" })
+        </div>
+        <br />
+    }
+</div>

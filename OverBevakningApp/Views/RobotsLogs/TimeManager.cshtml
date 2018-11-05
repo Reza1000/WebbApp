@@ -1,0 +1,94 @@
+﻿@model IEnumerable<OverBevakningApp.Models.RobotsLog>
+
+@{
+    ViewBag.Title = "TimeManager";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <style>
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffebe9;
+        }
+
+        th {
+            background-color: #ff9c90;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+
+    <table class="table">
+        <br>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Rob.RobId)</th>
+            <th>@Html.DisplayNameFor(model => model.Rob.Beskrivning)</th>
+            <th>@Html.DisplayNameFor(model => model.TimeStamp)</th>
+            <th><span> Försening </span></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rob.RobId)
+                </td>
+
+                <td bgcolor="#ffc8c3">
+                    @Html.DisplayFor(modelItem => item.Rob.Beskrivning)
+                </td>
+
+
+
+                <td>
+                    @if (item.TimeStamp == DateTime.MinValue)
+                    {
+                        <h5>Det finns ingen logg att visa!</h5>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.TimeStamp)
+                    }
+                </td>
+                <td>
+                    @if (item.TimeStamp == DateTime.MinValue)
+                    {
+                        <h5>N/A</h5>
+                    }
+                    else
+                    {
+                        var Duration = DateTime.Now - item.TimeStamp - TimeSpan.FromMinutes(item.Rob.IntPuls);
+                        <span style="color:#FE2E2E"> @Duration.Days dagar, @Duration.Hours timmar, @Duration.Minutes minuter</span>
+                    }
+
+                </td>
+
+
+            </tr>
+
+        }
+    </table>
+
+</body>
+</html>
+

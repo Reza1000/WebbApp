@@ -1,0 +1,42 @@
+﻿@model OverBevakningApp.Models.Robot
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detaljer</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Beskrivning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beskrivning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IntPuls)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IntPuls)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactInfo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Redigera", "Edit", "RobotsController", new { id = Model.RobId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Tillbaka till robot listan", "Index", "RobotsController", new { @class = "btn btn-primary" })
+</p>
