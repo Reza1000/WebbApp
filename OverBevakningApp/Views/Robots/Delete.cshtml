@@ -1,10 +1,10 @@
 ﻿@model OverBevakningApp.Models.Robot
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Ta bort robot";
 }
 
-<h2>Tabort robot</h2>
+<h2>Ta bort robot</h2>
 
 
 <div>
@@ -33,8 +33,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Tabort" class="btn btn-danger" /> |
-            @Html.ActionLink("tillbaka till robot listan", "Index", "RobotsController", new { @class = "btn btn-primary" })
+            <input type="submit" value="Ta bort" class="btn btn-danger" /> |
+            @Html.ActionLink("Tillbaka till robotlistan", "Index", "RobotsController", new { @class = "btn btn-primary" })
         </div>
         <br />
     }

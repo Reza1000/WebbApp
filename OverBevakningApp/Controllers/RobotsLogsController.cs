@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using OverBevakningApp.DAL;
+
+
 using OverBevakningApp.Models;
 
 namespace OverBevakningApp.Controllers
@@ -22,12 +24,12 @@ namespace OverBevakningApp.Controllers
         public ActionResult AddLog(int? id)
         {
             Robot robot = db.Robots.Where(r => r.RobId == id).FirstOrDefault();
-            RobotsLog robLogObj = new RobotsLog { TimeStamp = DateTime.Now, RobId = id };
+            RobotsLog robotLog = new RobotsLog { TimeStamp = DateTime.Now, RobId = id };
 
             if (robot != null)
             {
                 robot.MailSended = false;
-                db.RobotsLogs.Add(robLogObj);
+                db.RobotsLogs.Add(robotLog);
                 db.SaveChanges();
             }
 
@@ -37,7 +39,6 @@ namespace OverBevakningApp.Controllers
         public ActionResult TimeManager()
         {
             List<RobotsLog> lateLogs = new List<RobotsLog>();
-            Robot robot = new Robot();
             RobotsLog Log;
 
             foreach (Robot item in db.Robots)
@@ -66,8 +67,6 @@ namespace OverBevakningApp.Controllers
             RobotsLog Log;
             var robotList = db.Robots.ToList();
 
-            
-
             foreach (Robot item in robotList)
             {
                 Log = db.RobotsLogs
@@ -75,7 +74,12 @@ namespace OverBevakningApp.Controllers
                      .OrderByDescending(i => i.TimeStamp)
                      .FirstOrDefault();
 
-                if (DateTime.Now - Log.TimeStamp > TimeSpan.FromMinutes(item.IntPuls))
+                if(Log == null)
+                {
+                    item.MailSended = true;
+                }
+
+                else if (DateTime.Now - Log.TimeStamp > TimeSpan.FromMinutes(item.IntPuls))
                 {
                     if (item.MailSended == false)
                     {
@@ -106,7 +110,7 @@ namespace OverBevakningApp.Controllers
                 mail.Body = emailbody;
 
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
-                smtpClient.Credentials = new NetworkCredential("rezazaman7@gmail.com", "");
+                smtpClient.Credentials = new NetworkCredential("rezazaman7@gmail.com", "markpink");
                 smtpClient.EnableSsl = true;
                 smtpClient.Send(mail);
             }

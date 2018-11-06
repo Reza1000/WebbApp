@@ -2,10 +2,10 @@
 
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Logglista";
 }
 
-
+<span style="color:#006600"><h2>Logglista</h2></span>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +49,7 @@
     {
         <br />
         <p>
-            Sök: @Html.TextBox("beskriv")
+            Sök logg: @Html.TextBox("beskriv")
             <input type="submit" class="btn btn-success btn btn-outline-success btn-sm" value="Sök" />
 
         </p>
@@ -94,7 +94,7 @@
 
                 </td>
                 <td>
-                    @Html.ActionLink("Ta-bort", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
                 </td>
             </tr>
 

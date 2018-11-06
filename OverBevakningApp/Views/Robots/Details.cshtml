@@ -1,7 +1,7 @@
 ﻿@model OverBevakningApp.Models.Robot
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detaljer";
 }
 
 <h2>Detaljer</h2>
@@ -37,6 +37,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Redigera", "Edit", "RobotsController", new { id = Model.RobId }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Tillbaka till robot listan", "Index", "RobotsController", new { @class = "btn btn-primary" })
+
+    @Html.ActionLink("Tillbaka till robotlistan", "Index", "RobotsController", new { @class = "btn btn-primary" })
 </p>

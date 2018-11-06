@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<OverBevakningApp.Models.RobotsLog>
 
 @{
-    ViewBag.Title = "TimeManager";
+    ViewBag.Title = "Sena loggar";
 }
+
+<span style="color:#E86354"><h2>Sena loggar</h2></span>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +56,7 @@
                     @Html.DisplayFor(modelItem => item.Rob.RobId)
                 </td>
 
-                <td bgcolor="#ffc8c3">
+                <td>
                     @Html.DisplayFor(modelItem => item.Rob.Beskrivning)
                 </td>
 
@@ -63,7 +65,9 @@
                 <td>
                     @if (item.TimeStamp == DateTime.MinValue)
                     {
-                        <h5>Det finns ingen logg att visa!</h5>
+                        @*<h5>Ny robot! Det finns ingen logg att visa.</h5>*@
+                        @*@Html.DisplayName("Ny robot!Det finns ingen logg att visa.")*@
+                        <text>Ny robot! Det finns ingen tidsstämpel att visa.</text>
                     }
                     else
                     {
@@ -73,12 +77,13 @@
                 <td>
                     @if (item.TimeStamp == DateTime.MinValue)
                     {
-                        <h5>N/A</h5>
+
+                        <text>N/A</text>
                     }
                     else
                     {
                         var Duration = DateTime.Now - item.TimeStamp - TimeSpan.FromMinutes(item.Rob.IntPuls);
-                        <span style="color:#FE2E2E"> @Duration.Days dagar, @Duration.Hours timmar, @Duration.Minutes minuter</span>
+                    <span style="color:#FE2E2E"> @Duration.Days dagar, @Duration.Hours timmar, @Duration.Minutes minuter, @Duration.Seconds sekunder</span>
                     }
 
                 </td>

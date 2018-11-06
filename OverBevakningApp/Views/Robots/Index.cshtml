@@ -1,83 +1,85 @@
 ﻿@model IEnumerable<OverBevakningApp.Models.Robot>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Robotar";
 }
-<br>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-    <style>
+<span style="color:#2C48A4"><h2>Robotar</h2></span>
 
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #cce6ff;
-        }
-
-        th {
-            background-color: #67b4ff;
-            color: white;
-        }
-    </style>
-
-</head>
-<body>
-
-    @Html.ActionLink("Skapa ny robot", "Create", "RobotsLogsController", new { @class = "btn btn-primary" })
-
-    <br>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RobId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Beskrivning)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IntPuls)
-            </th>
-            <th></th>
-        </tr>
+        <style>
 
-        @foreach (var item in Model)
-        {
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #cce6ff;
+            }
+
+            th {
+                background-color: #67b4ff;
+                color: white;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        @Html.ActionLink("Registrera ny robot", "Create", "RobotsLogsController", new { @class = "btn btn-primary" })
+
+        <br>
+
+
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RobId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Beskrivning)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IntPuls)
-                </td>
-                <td>
-                    @Html.ActionLink("Redigera", "Edit", new { id = item.RobId }) |
-                    @Html.ActionLink("Detaljer", "Details", new { id = item.RobId }) |
-                    @Html.ActionLink("Ta-bort", "Delete", new { id = item.RobId })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.RobId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Beskrivning)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IntPuls)
+                </th>
+                <th></th>
             </tr>
-        }
 
-    </table>
-</body>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RobId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Beskrivning)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IntPuls)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Redigera", "Edit", new { id = item.RobId }) |
+                        @Html.ActionLink("Detaljer", "Details", new { id = item.RobId }) |
+                        @Html.ActionLink("Ta bort", "Delete", new { id = item.RobId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </body>
 </html>

@@ -50,7 +50,7 @@ namespace OverBevakningApp.Controllers
             {
                 db.Robots.Add(robot);
                 db.SaveChanges();
-                return RedirectToAction("AddLog", "RobotsLogs");
+                return RedirectToAction("Index", "Robots");
             }
 
             return View(robot);
