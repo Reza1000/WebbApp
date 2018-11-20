@@ -105,12 +105,12 @@ namespace OverBevakningApp.Controllers
 
             if (robot.ContactInfo != null)
             {
-                MailMessage mail = new MailMessage("rezazaman7@gmail.com", robot.ContactInfo);
+                MailMessage mail = new MailMessage("", robot.ContactInfo);
                 mail.Subject = "Loggen är inte mottagen";
                 mail.Body = emailbody;
 
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
-                smtpClient.Credentials = new NetworkCredential("rezazaman7@gmail.com", "markpink");
+                smtpClient.Credentials = new NetworkCredential("", "");
                 smtpClient.EnableSsl = true;
                 smtpClient.Send(mail);
             }

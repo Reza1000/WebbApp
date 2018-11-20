@@ -11,12 +11,16 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 
     <style>
+        body {
+            background-color: #F3FFF4;
+        }
+
 
         table {
             border-collapse: collapse;
@@ -55,8 +59,6 @@
         </p>
     }
 
-
-
     <table class="table">
 
         <tr>
@@ -81,22 +83,23 @@
         @foreach (var item in Model)
         {
 
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rob.RobId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rob.Beskrivning)
-                </td>
-
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rob.RobId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rob.Beskrivning)
+            </td>
+      
                 <td>
                     @Html.DisplayFor(modelItem => item.TimeStamp)
 
                 </td>
-                <td>
-                    @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
-                </td>
-            </tr>
+         
+            <td>
+                @Html.ActionLink("Ta bort", "Delete", new { id = item.Id })
+            </td>
+        </tr>
 
         }
 
