@@ -33,7 +33,7 @@ namespace OverBevakningApp.Controllers
                 db.SaveChanges();
             }
 
-            return View(db.RobotsLogs.OrderByDescending(r => r.TimeStamp));
+            return View(db.RobotsLogs.OrderByDescending(r => r.TimeStamp).ToList());
         }
 
         public ActionResult TimeManager()
