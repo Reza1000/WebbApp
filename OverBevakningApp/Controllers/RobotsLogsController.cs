@@ -123,7 +123,7 @@ namespace OverBevakningApp.Controllers
             var robs = db.Robots.Where(r => r.Beskrivning.Contains(beskriv)).FirstOrDefault();
             var logs = db.RobotsLogs.Where(r => r.RobId == robs.RobId);
 
-            if (!string.IsNullOrWhiteSpace(beskriv) && db.Robots.Where(r => r.Beskrivning.Contains(beskriv)).Any())
+            if (!string.IsNullOrWhiteSpace(beskriv) && db.Robots.Where(r => r.Beskrivning.StartsWith(beskriv)).Any())
             {
                 return View("AddLog", logs);
             }
